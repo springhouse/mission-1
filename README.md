@@ -9,7 +9,7 @@ Restful &amp; Graphql / Basic Database operation
 
 어떤 사람이든 이 우물을 퍼갈 수 있습니다.
 
-각 사람들은 한번에 2L의 우물을 퍼갈 수 있으며, 
+각 사람들은 한번에 1~2L의 우물을 퍼갈 수 있으며, 
 
 여러분들의 임무는 이 우물양이 `0-50L` 범위 내에 있도록 요청을 처리하는 것입니다.
 
@@ -38,7 +38,7 @@ Restful &amp; Graphql / Basic Database operation
               ]
          ```
     - ``/draw`` : ``DELETE`` 우물에서 `amount`물을 만큼 퍼갑니다.
-        - 요청 예시 : ``{"username" : "person1"}``
+        - 요청 예시 : ``{"username" : "person1", "amount": 1}``
     - ``/water``: `UPDATE` 현재 있는 우물에 물을 붓습니다.
         - 요청 예시 : ``{"amount" : "1"}``
         
@@ -63,12 +63,12 @@ Restful &amp; Graphql / Basic Database operation
           "data": {
             "username" : "person1"
             logs: [{
-                 "time" : "2019-06-27 11:00:48",
-               },
-               {
-                   "time" : "2019-06-27 11:00:48",
-               }
-           ]
+             "time" : "2019-06-27 11:00:48",
+             "amount" : "2"    
+           },{
+             "time" : "2019-06-27 11:00:50",
+             "amount" : "1"  
+        }]
           }
         }     
       ```
