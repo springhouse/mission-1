@@ -63,9 +63,12 @@ Restful &amp; Graphql / Basic Database operation
           "data": {
             "username" : "person1"
             logs: [{
-             "time" : "2019-06-27 11:00:48",
-             "amount" : "25"    
-           }]
+                 "time" : "2019-06-27 11:00:48",
+               },
+               {
+                   "time" : "2019-06-27 11:00:48",
+               }
+           ]
           }
         }     
       ```
