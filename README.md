@@ -81,7 +81,7 @@ Restful &amp; Graphql / Basic Database operation
 
 ### 제한사항
 
-1. ``우물``은 int형 변수로 서버 시작시 초기 값 `30`으로 설정
+1. 우물은 데이터베이스 정보가 아닌 하나의 객체나 변수로 선언가능, 서버 시작시 초기 값 `30`으로 설정
 
 2. 모든 클라이언트 요청은 xhttprequest이나 fetch 중 하나를 사용할 것
 
