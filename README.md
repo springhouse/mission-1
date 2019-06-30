@@ -37,7 +37,7 @@ Restful &amp; Graphql / Basic Database operation
                   {"username" : "person2", "total": 5}
               ]
          ```
-    - ``/draw`` : ``DELETE`` 우물에서 `amount`물을 만큼 퍼갑니다.
+    - ``/draw`` : ``POST`` 우물에서 `amount`물을 만큼 퍼갑니다.
         - 요청 예시 : ``{"username" : "person1", "amount": 1}``
     - ``/water``: `UPDATE` 현재 있는 우물에 물을 붓습니다.
         - 요청 예시 : ``{"amount" : "1"}``
