@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forestvue.mapper.UserScoreMapper">
+    <select id="getUsers" resultType="com.forestvue.domain.UserScoreVO">
+        <![CDATA[
+        select * from tbl_userscore
+        ]]>
+    </select>
+    <select id="getUserActionsById" resultType="com.forestvue.domain.UserActionVO">
+        <![CDATA[
+        select * from getUserActionsById where userid = #{userid}
+        ]]>
+    </select>
+    <insert id="addUser">
+        insert into tbl_userscore (userid,username)
+        values (seq_userscore.nextval, #{username})
+    </insert>
+    <update id="addScore">
+        update tbl_userscore
+        set total=total + #{amount}
+        where username = #{username}
+    </update>
+    <delete id="deleteUserScore">
+        delete from tbl_userscore
+    </delete>
+    <delete id="deleteUserAction">
+        delete from tbl_useraction
+    </delete>
+</mapper>
