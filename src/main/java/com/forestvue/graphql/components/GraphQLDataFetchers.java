@@ -1,7 +1,9 @@
 package com.forestvue.graphql.components;
 
+import com.forestvue.service.WellService;
 import com.google.common.collect.ImmutableMap;
 import graphql.schema.DataFetcher;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -10,6 +12,14 @@ import java.util.Map;
 
 @Component
 public class GraphQLDataFetchers {
+
+    private WellService wellService;
+
+    @Autowired
+    public GraphQLDataFetchers(WellService sc){
+        this.wellService = sc;
+    }
+
 
     private static List<Map<String, String>> books = Arrays.asList(
             ImmutableMap.of("id", "book-1",

@@ -25,7 +25,9 @@ import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 @Configuration
 @ComponentScan(basePackages = {"com.forestvue.service",
         "com.forestvue.graphql.components",
-        "com.forestvue.graphql"})
+        "com.forestvue.graphql",
+        "com.forestvue.repository"
+})
 @MapperScan(basePackages = {"com.forestvue.mapper"})
 public class RootConfig {
     @Bean
