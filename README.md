@@ -1,5 +1,20 @@
 # Spring mvc 5 with concurrency
-Restful &amp; Graphql / Basic Database operation
+This program deals with following features:
+
+   - Basic REST operation (GET / POST)
+   
+   - Graphql controller
+   
+   - Concurrent request test
+  
+### installation guide
+
+1. clone repository
+
+2. run maven install on project
+
+3. download ojdbc8.jar then include it in build path
+ (to be included in maven later updates)
 
 ### Problem
 
