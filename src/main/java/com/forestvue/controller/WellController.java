@@ -23,6 +23,14 @@ public class WellController {
         model.addAttribute("test", "1234");
         return "index";
     }
+    @GetMapping(value="/list", produces = "application/json")
+    @ResponseBody
+    public Object list(){
+        Map<String, Object> m = new HashMap<>();
+        m.put("users", wellService.getUsers());
+        return m;
+    }
+
     @PostMapping(value="/draw", produces = "application/json")
     @ResponseBody
     public Object draw(@RequestBody UserDrawInfo info){
@@ -31,6 +39,8 @@ public class WellController {
         m.put("message", "success");
         return m;
     }
+
+
     @RequestMapping(value="/json", produces = "application/json")
     @ResponseBody
     public Object json(){

@@ -29,11 +29,15 @@ public class WellService {
         userScoreMapper.deleteUserAction();
         userScoreMapper.deleteUserScore();
     }
+
     public int getWell(){
         return w.getWell();
     }
     public void register(UserScoreVO user){
         userScoreMapper.addUser(user);
+    }
+    public List<UserScoreVO> getUsers(){
+        return userScoreMapper.getUsers();
     }
     public List<UserActionVO> getUserActionsById(int id){
         return userScoreMapper.getUserActionsById(id);
