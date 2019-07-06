@@ -10,11 +10,13 @@ public interface UserScoreMapper {
     //insert
     public void addUser(UserScoreVO user);
     public void addScore(UserDrawInfo user);
-
+    public void addUserAction(UserActionVO user);
     //update
     public void deleteUserScore();
     public void deleteUserAction();
+
     //select
+    public int findIdByUsername(String username);
     public List<UserActionVO> getUserActionsById(int userid);
     public List<UserScoreVO> getUsers();
 }

@@ -10,12 +10,19 @@
     </select>
     <select id="getUserActionsById" resultType="com.forestvue.domain.UserActionVO">
         <![CDATA[
-        select * from getUserActionsById where userid = #{userid}
-        ]]>
+    select * from getUserActionsById where userid = #{userid}
+    ]]>
+    </select>
+    <select id="findIdByUsername" resultType="int">
+        select userid from tbl_userscore where username = #{username}
     </select>
     <insert id="addUser">
         insert into tbl_userscore (userid,username)
         values (seq_userscore.nextval, #{username})
+    </insert>
+    <insert id="addUserAction">
+        insert into tbl_useraction (userid,amount)
+        values (#{userid},#{amount})
     </insert>
     <update id="addScore">
         update tbl_userscore

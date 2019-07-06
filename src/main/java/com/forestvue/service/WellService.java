@@ -24,6 +24,10 @@ public class WellService {
     public void draw(UserDrawInfo info){
         w.remove(info.getAmount());
         userScoreMapper.addScore(info);
+        UserActionVO userActionVO = new UserActionVO();
+        userActionVO.setUserid(userScoreMapper.findIdByUsername(info.getUsername()));
+        userActionVO.setAmount(info.getAmount());
+        userScoreMapper.addUserAction(userActionVO);
     }
     public void deleteAll(){
         userScoreMapper.deleteUserAction();
