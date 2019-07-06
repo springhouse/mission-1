@@ -5,17 +5,17 @@ Restful &amp; Graphql / Basic Database operation
 
 마을 한 가운데에 우물이 존재합니다. 
 
-초기에 `30L`의 물을 저장하고 있으며, 우물의 최대 저장량은 `50L`입니다.
+초기에 `10000L`의 물을 저장하고 있으며, 최대 저장량은 고려하지 않습니다.
 
 어떤 사람이든 이 우물을 퍼갈 수 있습니다.
 
 각 사람들은 한번에 1~2L의 우물을 퍼갈 수 있으며, 
 
-여러분들의 임무는 이 우물양이 `0-50L` 범위 내에 있도록 요청을 처리하는 것입니다.
+여러분들의 임무는 사용자의 요청만큼 우물량을 조절하는 것입니다. 
 
 ### Objectvie
 
-최소 10명의 동시다발성 요청을 처리하는 서버 프로그램 만들어보기
+최소 ``50``명의 동시다발성 요청을 처리하는 서버 프로그램 만들어보기
 
 ### Todos
 
@@ -33,8 +33,8 @@ Restful &amp; Graphql / Basic Database operation
         - 응답 예시 :
         ```js
                     users: [
-                  {"username" : "person2", "total": 25},
-                  {"username" : "person2", "total": 5}
+                  {"userid" : 1, "username" : "person2", "total": 25},
+                  {"userid" : 2, "username" : "person2", "total": 5}
               ]
          ```
     - ``/draw`` : ``POST`` 우물에서 `amount`물을 만큼 퍼갑니다.
@@ -49,7 +49,7 @@ Restful &amp; Graphql / Basic Database operation
     ```js
     {
       user(name: 'person1') {
-        name
+        id
         logs {
           time,
           amount
@@ -61,7 +61,7 @@ Restful &amp; Graphql / Basic Database operation
     ```js
         {
           "data": {
-            "username" : "person1"
+            "userid" : 1
             logs: [{
              "time" : "2019-06-27 11:00:48",
              "amount" : "2"    
@@ -72,21 +72,26 @@ Restful &amp; Graphql / Basic Database operation
           }
         }     
       ```
-3. 데이터베이스 테이블 구조는 본인이 직접 구현
+3. 데이터베이스 테이블 구조 예시
+
+    사용자 테이블
     
-
-4. **Optional** 최소 10명의 동시다발적 restful 요청을 수행하는 Junit Test 작성
-
-스터디장은 Optional 구현 필수(구현시 공유예정)
+    - (사용자 id, 사용자 이름, 우물을 퍼간 총 량)
+    
+    사용자 행동 로그 테이블
+    
+    - (사용자 id, 사용자가 물을 퍼간 시간, 사용자가 물을 퍼간 양)
+   
+4. 최소 10명의 동시다발적 restful 요청을 수행하는 Junit Test 작성
 
 ### 제한사항
 
-1. 우물은 데이터베이스 정보가 아닌 하나의 객체나 변수로 선언가능, 서버 시작시 초기 값 `30`으로 설정
+1. 우물은 데이터베이스 정보가 아닌 하나의 객체나 변수로 선언가능, 서버 시작시 초기 값 `10000`으로 설정
 
 2. 모든 클라이언트 요청은 xhttprequest이나 fetch 중 하나를 사용할 것
 
 3. 한 우물에서 동시에 퍼갈수 있는 사람 수, 우물을 퍼가는 시간 고려하지 않음
 
 4. 모든 유효한 자원에 대한 요청은 반드시 수용할 것
-    - 예시1) 30L가 남았을 때 총 10명이 한꺼번에 2L 씩 퍼갔을 경우 정확히 10L가 남아있어야 합니다.
+    - 예시1) 10000L가 남았을 때 총 50명이 한꺼번에 2L 씩 50번 퍼갔을 경우 정확히 5000L가 남아있어야 합니다.
     - 예시2) 30L가 남았을 때 20명이 동시에 2L 씩 퍼가겠다는 요청을 했을 경우 15명의 요청은 수용, 5명의 요청은 거부
