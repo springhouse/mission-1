@@ -48,7 +48,7 @@ Restful &amp; Graphql / Basic Database operation
     
     ```js
     {
-      user(name: 'person1') {
+      user(id: '1') {
         id
         logs {
           time,
