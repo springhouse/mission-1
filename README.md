@@ -82,7 +82,7 @@ Restful &amp; Graphql / Basic Database operation
     
     - (사용자 id, 사용자가 물을 퍼간 시간, 사용자가 물을 퍼간 양)
    
-4. 최소 10명의 동시다발적 restful 요청을 수행하는 Junit Test 작성
+4. 최소 50명의 동시다발적 restful 요청을 수행하는 Junit Test 작성
 
 ### 제한사항
 
