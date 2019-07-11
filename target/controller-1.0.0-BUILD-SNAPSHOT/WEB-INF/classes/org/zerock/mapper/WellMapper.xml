@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "=-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.WellMapper">
+
+
+	<update id="draw">
+		UPDATE tbl_well_
+		SET total_supply = IF (total_supply - #{amount} > 100000, total_supply - #{amount}, total_supply),
+	    status = IF (total_supply - #{amount} > 100000, 1, 0)
+		WHERE id = 1
+		<selectKey resultType="int" keyProperty="status" order="AFTER">
+			SELECT status FROM tbl_well_
+		</selectKey>
+	</update>
+	<insert id="updateUser">
+	    INSERT INTO tbl_well_user(username, total)
+	    VALUES (#{username}, #{amount})
+	    ON DUPLICATE KEY UPDATE
+	      total = total + #{amount}
+	      <selectKey resultType="int" keyProperty="total" order="AFTER">
+			SELECT total FROM tbl_well_user WHERE username = #{username}
+		</selectKey>
+	</insert>
+	
+	<insert id="insertRecord">
+	    INSERT INTO tbl_well_record (username, amount, total)
+	    VALUES (#{username}, #{amount}, #{total})
+	</insert>
+	
+	<select id="getList" resultType="org.zerock.domain.UserDrawVO">
+<![CDATA[
+  SELECT userid, username, total from tbl_well_user
+  ORDER BY total
+]]>
+	</select>
+	<select id="getListbyName" resultType="org.zerock.domain.WellVO">
+		SELECT username, well_supply, amount, total, dateEntered from tbl_well
+		WHERE username = {username}
+	</select>
+
+	<insert id="insert">
+		INSERT INTO tbl_well (well_supply, username, amount, total)
+		VALUES (
+		((select * from (select well_supply from tbl_well ORDER BY id DESC limit 1) tbl_well WHERE well_supply > 5000) - #{amount}),
+		#{username},
+		#{amount},
+		50
+		)
+	</insert>
+	
+	
+	
+</mapper>
