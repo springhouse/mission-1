@@ -40,7 +40,6 @@
 		SELECT username, well_supply, amount, total, dateEntered from tbl_well
 		WHERE username = {username}
 	</select>
-
 	<insert id="insert">
 		INSERT INTO tbl_well (well_supply, username, amount, total)
 		VALUES (

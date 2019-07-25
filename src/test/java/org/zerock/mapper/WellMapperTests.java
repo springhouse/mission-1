@@ -26,7 +26,9 @@ public class WellMapperTests {
 		log.info("--------------------------"+draw.getStatus());
 	}
 
-	
+	public void testtest() {
+		System.out.println("-----------------"+ (int)'A' + (int)'Z' + (int)'a' + (int)'z');
+	}
 	public void testUpdateUser() {
 		UserDrawVO draw = new UserDrawVO();
 		draw.setUsername("Kim");
@@ -41,7 +43,7 @@ public class WellMapperTests {
 		draw.setAmount(30);
 		mapper.insertRecord(draw);
 	}
-	@Test
+	
 	public void testGetList() {
 		mapper.getList().forEach(record -> log.info(record));
 	}

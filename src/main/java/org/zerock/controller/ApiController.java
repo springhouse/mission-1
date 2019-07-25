@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,32 +20,29 @@ import lombok.extern.log4j.Log4j;
 @RestController
 @Log4j
 @RequestMapping("/api/*")
-
+@Controller
 public class ApiController {
 	
 	@Autowired
 	private ApiService service;
 	
-	@GetMapping(value = "/list",
-			produces = "application/json")
+	@GetMapping(value = "/list")
 	public List<UserDrawVO> list() {
 		return service.getList();
 	}
 	@PostMapping(value = "/draw")
 	public void post(@RequestBody Map<String, Object> s) {
-		log.info("Post...................");
 		UserDrawVO draw = new UserDrawVO();
 		draw.setUsername(s.get("username").toString());
 		draw.setAmount((int)s.get("amount"));
 		log.info(s.get("username").toString());
 		log.info((int)s.get("amount"));
-		log.info("calling draw function now");
 		service.draw(draw);
-		log.info("AAAAAA");
 		if (draw.getStatus() == 1) {
 			log.info("Performing updateUser and insertRecord now..........");
 			service.updateUser(draw);
 			service.insertRecord(draw);
+			
 		}
 //		log.info(s.get("username").getClass());
 //		log.info(s.get("amount").getClass());

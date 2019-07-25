@@ -36,11 +36,10 @@
   ORDER BY total
 ]]>
 	</select>
-	<select id="getListbyName" resultType="org.zerock.domain.WellVO">
+	<!-- <select id="getListbyName" resultType="org.zerock.domain.WellVO">
 		SELECT username, well_supply, amount, total, dateEntered from tbl_well
 		WHERE username = {username}
 	</select>
-
 	<insert id="insert">
 		INSERT INTO tbl_well (well_supply, username, amount, total)
 		VALUES (
@@ -49,7 +48,7 @@
 		#{amount},
 		50
 		)
-	</insert>
+	</insert> -->
 	
 	
 	

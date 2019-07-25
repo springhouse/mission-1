@@ -26,20 +26,12 @@ public class ApiServiceTests {
 		log.info("AAAAAAAAA" + service);
 		assertNotNull(service);
 	}
-	
 
-	
-	
-	
+		
 	public void testgetList() {
 		service.getList().forEach(record -> log.info(record));
 	}
-	public void insert() {
-		WellVO well = new WellVO();
-		well.setUsername("TestAPI");
-		well.setAmount(10);
-		service.insert(well);
-	}
+	
 	@Test
 	public void testdraw() {
 		log.info("AAAA");

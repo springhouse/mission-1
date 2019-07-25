@@ -35,28 +35,10 @@ public class ApiServiceImpl implements ApiService {
 		mapper.insertRecord(draw);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public List<UserDrawVO> getList() {
 		log.info("getting the list..........");
 		return mapper.getList();
 	}
-	@Override
-	public List<WellVO> getListbyName(String username) {
-		log.info("getting the list by the name........");
-		return mapper.getListbyName(username);
-	}
-	
-	@Override
-	public void insert(WellVO well) {
-		log.info("inserting new record......");
-		mapper.insert(well);
-	}
+
 }
